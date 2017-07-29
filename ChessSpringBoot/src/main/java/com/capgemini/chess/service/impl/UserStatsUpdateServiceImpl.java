@@ -5,10 +5,10 @@ import org.springframework.stereotype.Service;
 
 import com.capgemini.chess.dataaccess.UserDao;
 import com.capgemini.chess.exception.UserProfileValidationException;
+import com.capgemini.chess.service.UserStatsCalculationService;
 import com.capgemini.chess.service.UserStatsReaderService;
 import com.capgemini.chess.service.UserStatsUpdateService;
 import com.capgemini.chess.service.to.MatchTO;
-import com.capgemini.chess.service.to.UserStatsCalculationService;
 import com.capgemini.chess.service.to.UserStatsTO;
 
 @Service
@@ -25,8 +25,6 @@ public class UserStatsUpdateServiceImpl implements UserStatsUpdateService {
 		this.userStatsCalculationService = userStatsCalculationService;
 		this.userDao = userDao;
 	}
-
-
 
 	@Override
 	public void updateStats(MatchTO matchto) throws UserProfileValidationException {

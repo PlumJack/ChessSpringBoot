@@ -2,7 +2,7 @@ package com.capgemini.chess.service.impl;
 
 import org.springframework.stereotype.Service;
 
-import com.capgemini.chess.service.to.UserStatsCalculationService;
+import com.capgemini.chess.service.UserStatsCalculationService;
 import com.capgemini.chess.service.to.UserStatsTO;
 
 @Service

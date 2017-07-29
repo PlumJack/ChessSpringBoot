@@ -1,4 +1,6 @@
-package com.capgemini.chess.service.to;
+package com.capgemini.chess.service;
+
+import com.capgemini.chess.service.to.UserStatsTO;
 
 public interface UserStatsCalculationService {
 	

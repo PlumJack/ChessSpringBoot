@@ -30,8 +30,6 @@ public class MatchRegistrationServiceImpl implements MatchRegistrationService {
 		this.userStatsUpdateService = userStatsUpdateService;
 	}
 
-
-
 	@Override
 	public void registerNewMatch(MatchTO newMatch) throws UserProfileValidationException, MatchValidationException, MatchExistsInDatabaseException {
 		

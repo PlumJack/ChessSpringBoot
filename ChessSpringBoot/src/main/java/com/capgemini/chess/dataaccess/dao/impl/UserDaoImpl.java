@@ -48,7 +48,7 @@ public class UserDaoImpl implements UserDao {
 	
 	
 	public UserProfileTO findByLogin(String login) {
-		UserProfileEntity user = users.values().stream().filter(u -> u.getEmail().equals(login)).findFirst().orElse(null);
+		UserProfileEntity user = users.values().stream().filter(u -> u.getLogin().equals(login)).findFirst().orElse(null);
 		return UserProfileMapper.map(user);
 	}
 

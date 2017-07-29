@@ -30,7 +30,6 @@ public class UserServiceFacadeImpl implements UserServiceFacade {
 	@Autowired
 	public UserServiceFacadeImpl(UserDao userDao, UserStatsReaderService userStatsReaderService,
 			UpdateUserProfileService updateUserProfileService, MatchRegistrationService matchRegistrationService) {
-		super();
 		this.userDao = userDao;
 		this.userStatsReaderService = userStatsReaderService;
 		this.updateUserProfileService = updateUserProfileService;
