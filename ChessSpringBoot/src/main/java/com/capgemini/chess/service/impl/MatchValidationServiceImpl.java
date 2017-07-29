@@ -13,7 +13,7 @@ import com.capgemini.chess.service.to.MatchTO;
 @Service
 public class MatchValidationServiceImpl implements MatchValidationService {
 
-	private MatchDao matchDao;
+	private MatchDao matchDao = null;
 	
 	@Autowired
 	public MatchValidationServiceImpl(MatchDao matchDao) {

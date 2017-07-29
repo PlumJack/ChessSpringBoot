@@ -14,18 +14,14 @@ import com.capgemini.chess.service.to.UserUpdateTO;
 @Service
 public class UpdateUserProfileServiceImpl implements UpdateUserProfileService {
 	
-	private UserProfileValidationService userProfileValidationService;
-	private PasswordValidationService loginValidationService;
-	private UserDao userDao;
-	private PasswordValidationService passwordValidationService;
+	private UserProfileValidationService userProfileValidationService = null;
+	private UserDao userDao = null;
+	private PasswordValidationService passwordValidationService = null;
 	
 	@Autowired
 	public UpdateUserProfileServiceImpl(UserProfileValidationService userProfileValidationService,
-			PasswordValidationService loginValidationService, UserDao userDao,
-			PasswordValidationService passwordValidationService) {
-		super();
+			UserDao userDao, PasswordValidationService passwordValidationService) {
 		this.userProfileValidationService = userProfileValidationService;
-		this.loginValidationService = loginValidationService;
 		this.userDao = userDao;
 		this.passwordValidationService = passwordValidationService;
 	}

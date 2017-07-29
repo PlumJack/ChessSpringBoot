@@ -16,10 +16,10 @@ import com.capgemini.chess.service.to.MatchTO;
 @Service
 public class MatchRegistrationServiceImpl implements MatchRegistrationService {
 
-	private MatchDao matchDao;
-	private MatchValidationService matchValidationService;
-	private UserProfileValidationService userProfileValidationService;
-	private UserStatsUpdateService userStatsUpdateService;
+	private MatchDao matchDao = null;
+	private MatchValidationService matchValidationService = null;
+	private UserProfileValidationService userProfileValidationService = null;
+	private UserStatsUpdateService userStatsUpdateService = null;
 	
 	@Autowired
 	public MatchRegistrationServiceImpl(MatchDao matchDao, MatchValidationService matchValidationService,

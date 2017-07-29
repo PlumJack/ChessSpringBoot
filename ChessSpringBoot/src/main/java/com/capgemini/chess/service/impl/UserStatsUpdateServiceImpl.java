@@ -14,9 +14,9 @@ import com.capgemini.chess.service.to.UserStatsTO;
 @Service
 public class UserStatsUpdateServiceImpl implements UserStatsUpdateService {
 
-	private UserStatsReaderService userStatsReaderService;
-	private UserStatsCalculationService userStatsCalculationService;
-	private UserDao userDao;
+	private UserStatsReaderService userStatsReaderService = null;
+	private UserStatsCalculationService userStatsCalculationService = null;
+	private UserDao userDao = null;
 		
 	@Autowired
 	public UserStatsUpdateServiceImpl(UserStatsReaderService userStatsReaderService,

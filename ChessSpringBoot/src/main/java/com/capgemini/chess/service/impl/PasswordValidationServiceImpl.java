@@ -12,7 +12,7 @@ import com.capgemini.chess.service.to.UserUpdateTO;
 @Service
 public class PasswordValidationServiceImpl implements PasswordValidationService {
 
-	private UserDao userDao;
+	private UserDao userDao = null;
 	
 	@Autowired
 	public PasswordValidationServiceImpl(UserDao userDao) {
