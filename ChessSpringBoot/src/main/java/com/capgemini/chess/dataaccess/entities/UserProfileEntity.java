@@ -1,19 +1,29 @@
-package com.capgemini.chess.service.to;
+package com.capgemini.chess.dataaccess.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Lob;
 
-public class UserProfileTO {
+@Entity
+public class UserProfileEntity {
 
+	@Id
+	@GeneratedValue
 	private Long id;
+	@Column(nullable = false)
 	private String login;
+	@Column(nullable = false)
 	private String password;
 	private String name;
 	private String surname;
 	private String email;
+	@Lob
 	private String aboutMe;
+	@Lob
 	private String lifeMotto;
-	private UserStatsTO userStatsTO;
+	private UserStatsEntity userStatsEntity;
 
 	public Long getId() {
 		return id;
@@ -31,12 +41,10 @@ public class UserProfileTO {
 		this.login = login;
 	}
 
-	@JsonIgnore
 	public String getPassword() {
 		return password;
 	}
 
-	@JsonProperty
 	public void setPassword(String password) {
 		this.password = password;
 	}
@@ -80,12 +88,15 @@ public class UserProfileTO {
 	public void setLifeMotto(String lifeMotto) {
 		this.lifeMotto = lifeMotto;
 	}
-	
-	public UserStatsTO getUserStatsTO() {
-		return userStatsTO;
+
+	public UserStatsEntity getUserStatsEntity() {
+		return userStatsEntity;
 	}
 
-	public void setUserStatsTO(UserStatsTO userStatsTO) {
-		this.userStatsTO = userStatsTO;
+	public void setUserStatsEntity(UserStatsEntity userStatsEntity) {
+		this.userStatsEntity = userStatsEntity;
 	}
+	
+	
+
 }

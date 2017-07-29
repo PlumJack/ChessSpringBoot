@@ -1,14 +1,14 @@
-package com.capgemini.chess.service.mapper;
+package com.capgemini.chess.dataaccess.mappers;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.capgemini.chess.dataaccess.entities.UserEntity;
+import com.capgemini.chess.dataaccess.entities.UserProfileEntity;
 import com.capgemini.chess.service.to.UserProfileTO;
 
 public class UserProfileMapper {
-	
-	public static UserProfileTO map(UserEntity userEntity) {
+
+	public static UserProfileTO map(UserProfileEntity userEntity) {
 		if (userEntity != null) {
 			UserProfileTO userTO = new UserProfileTO();
 			userTO.setAboutMe(userEntity.getAboutMe());
@@ -19,14 +19,15 @@ public class UserProfileMapper {
 			userTO.setName(userEntity.getName());
 			userTO.setPassword(userEntity.getPassword());
 			userTO.setSurname(userEntity.getSurname());
+			userTO.setUserStatsTO(UserStatsMapper.map(userEntity.getUserStatsEntity()));
 			return userTO;
 		}
 		return null;
 	}
 
-	public static UserEntity map(UserProfileTO userTO) {
+	public static UserProfileEntity map(UserProfileTO userTO) {
 		if (userTO != null) {
-			UserEntity userEntity = new UserEntity();
+			UserProfileEntity userEntity = new UserProfileEntity();
 			userEntity.setAboutMe(userTO.getAboutMe());
 			userEntity.setEmail(userTO.getEmail());
 			userEntity.setId(userTO.getId());
@@ -35,12 +36,13 @@ public class UserProfileMapper {
 			userEntity.setName(userTO.getName());
 			userEntity.setPassword(userTO.getPassword());
 			userEntity.setSurname(userTO.getSurname());
+			userEntity.setUserStatsEntity(UserStatsMapper.map(userTO.getUserStatsTO()));
 			return userEntity;
 		}
 		return null;
 	}
-	
-	public static UserEntity update(UserEntity userEntity, UserProfileTO userTO) {
+
+	public static UserProfileEntity update(UserProfileEntity userEntity, UserProfileTO userTO) {
 		if (userTO != null && userEntity != null) {
 			userEntity.setAboutMe(userTO.getAboutMe());
 			userEntity.setEmail(userTO.getEmail());
@@ -52,12 +54,12 @@ public class UserProfileMapper {
 		}
 		return userEntity;
 	}
-	
-	public static List<UserProfileTO> map2TOs(List<UserEntity> userEntities) {
+
+	public static List<UserProfileTO> map2TOs(List<UserProfileEntity> userEntities) {
 		return userEntities.stream().map(UserProfileMapper::map).collect(Collectors.toList());
 	}
 
-	public static List<UserEntity> map2Entities(List<UserProfileTO> userTOs) {
+	public static List<UserProfileEntity> map2Entities(List<UserProfileTO> userTOs) {
 		return userTOs.stream().map(UserProfileMapper::map).collect(Collectors.toList());
 	}
 }
