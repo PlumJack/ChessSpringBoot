@@ -1,5 +1,6 @@
 package com.capgemini.chess.service.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.capgemini.chess.dataaccess.UserDao;
@@ -16,7 +17,17 @@ public class UserStatsUpdateServiceImpl implements UserStatsUpdateService {
 	private UserStatsReaderService userStatsReaderService;
 	private UserStatsCalculationService userStatsCalculationService;
 	private UserDao userDao;
-	
+		
+	@Autowired
+	public UserStatsUpdateServiceImpl(UserStatsReaderService userStatsReaderService,
+			UserStatsCalculationService userStatsCalculationService, UserDao userDao) {
+		this.userStatsReaderService = userStatsReaderService;
+		this.userStatsCalculationService = userStatsCalculationService;
+		this.userDao = userDao;
+	}
+
+
+
 	@Override
 	public void updateStats(MatchTO matchto) throws UserProfileValidationException {
 		UserStatsTO hostStats = userStatsReaderService.getStats(matchto.getHostPlayerId());

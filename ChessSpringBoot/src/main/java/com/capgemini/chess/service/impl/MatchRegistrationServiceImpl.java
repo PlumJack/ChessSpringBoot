@@ -1,5 +1,6 @@
 package com.capgemini.chess.service.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.capgemini.chess.dataaccess.MatchDao;
@@ -20,6 +21,17 @@ public class MatchRegistrationServiceImpl implements MatchRegistrationService {
 	private UserProfileValidationService userProfileValidationService;
 	private UserStatsUpdateService userStatsUpdateService;
 	
+	@Autowired
+	public MatchRegistrationServiceImpl(MatchDao matchDao, MatchValidationService matchValidationService,
+			UserProfileValidationService userProfileValidationService, UserStatsUpdateService userStatsUpdateService) {
+		this.matchDao = matchDao;
+		this.matchValidationService = matchValidationService;
+		this.userProfileValidationService = userProfileValidationService;
+		this.userStatsUpdateService = userStatsUpdateService;
+	}
+
+
+
 	@Override
 	public void registerNewMatch(MatchTO newMatch) throws UserProfileValidationException, MatchValidationException, MatchExistsInDatabaseException {
 		

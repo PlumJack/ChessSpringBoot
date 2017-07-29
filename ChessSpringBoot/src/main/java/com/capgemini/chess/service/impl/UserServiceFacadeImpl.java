@@ -20,13 +20,14 @@ public class UserServiceFacadeImpl implements UserServiceFacade {
 	
 	private UserDao userDao = null;
 	private UserStatsReaderService userStatsReaderService = null;
-	//
 	private UpdateUserProfileService updateUserProfileService = null;
-	
+
 	@Autowired
-	public UserServiceFacadeImpl(UserDao userDao, UserStatsReaderService userStatsReaderService) {
+	public UserServiceFacadeImpl(UserDao userDao, UserStatsReaderService userStatsReaderService,
+			UpdateUserProfileService updateUserProfileService) {
 		this.userDao = userDao;
 		this.userStatsReaderService = userStatsReaderService;
+		this.updateUserProfileService = updateUserProfileService;
 	}
 
 	public UserProfileTO saveUserProfile(UserProfileTO userProfileTo) throws UserProfileExistsInDatabaseException{

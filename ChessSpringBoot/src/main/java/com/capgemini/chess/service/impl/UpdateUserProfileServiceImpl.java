@@ -17,16 +17,20 @@ public class UpdateUserProfileServiceImpl implements UpdateUserProfileService {
 	private UserProfileValidationService userProfileValidationService;
 	private PasswordValidationService loginValidationService;
 	private UserDao userDao;
-	//
 	private PasswordValidationService passwordValidationService;
 	
 	@Autowired
 	public UpdateUserProfileServiceImpl(UserProfileValidationService userProfileValidationService,
-			PasswordValidationService loginValidationService, UserDao userDao) {
+			PasswordValidationService loginValidationService, UserDao userDao,
+			PasswordValidationService passwordValidationService) {
+		super();
 		this.userProfileValidationService = userProfileValidationService;
 		this.loginValidationService = loginValidationService;
 		this.userDao = userDao;
+		this.passwordValidationService = passwordValidationService;
 	}
+
+
 
 
 	@Override

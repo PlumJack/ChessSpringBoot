@@ -1,5 +1,6 @@
 package com.capgemini.chess.service.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.capgemini.chess.dataaccess.MatchDao;
@@ -14,8 +15,12 @@ public class MatchValidationServiceImpl implements MatchValidationService {
 
 	private MatchDao matchDao;
 	
-	private UserProfileValidationService userProfileValidationService;
-	
+	@Autowired
+	public MatchValidationServiceImpl(MatchDao matchDao) {
+		super();
+		this.matchDao = matchDao;
+	}
+
 	@Override
 	public void validateMatch(Long id) throws MatchValidationException {
 		MatchTO matchTO = matchDao.findById(id);
