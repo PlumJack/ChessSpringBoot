@@ -21,15 +21,6 @@ public class UserStatsReaderServiceImpl implements UserStatsReaderService {
 		this.userDao = userDao;
 		this.userProfileValidationService = userProfileValidationService;
 	}
-
-
-	/*
-	public UserStatsTO getStats(Long id) throws UserProfileValidationException {
-		userProfileValidationService.validateId(id);
-		
-		return userDao.getStats(id);
-	}
-	*/
 	
 	public UserStatsTO getStats(String login) throws UserProfileValidationException {
 		userProfileValidationService.validateLogin(login);

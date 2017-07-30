@@ -25,7 +25,7 @@ public class MatchDaoImpl implements MatchDao {
 		}
 		MatchEntity match = MatchMapper.map(matchToSave);
 		Long id = generateId();
-		matchToSave.setId(id);
+		match.setId(id);
 		matches.put(id, match);
 		return MatchMapper.map(match);
 	}

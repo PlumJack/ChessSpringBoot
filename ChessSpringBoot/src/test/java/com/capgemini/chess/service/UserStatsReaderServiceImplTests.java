@@ -26,26 +26,33 @@ public class UserStatsReaderServiceImplTests {
 	@Mock
 	private UserDao userDao;
 	
-	//private StatsReaderService flightControlService = null;
+	@Mock
+	private UserProfileValidationService userProfileValidationService;
+	
 	
 	@Before
-	public void setup() {
-		
+	public void setup(){
+		UserStatsTO userStatsTo = new UserStatsTO();
+		userStatsTo.setGamesWon(3);
+		Mockito.when(userDao.getStats("login123")).thenReturn(userStatsTo);
+		Mockito.when(userDao.getStats(123L)).thenReturn(userStatsTo);
 	}
 	
 	@Test
-	public void test() {
+	public void shouldGetStatsWithLogin() {
 		//given
-		UserStatsTO userStatsTo = new UserStatsTO();
-		userStatsTo.setGamesPlayed(5);
-		userStatsTo.setGamesWon(3);
-		userStatsTo.setGamesLost(2);
-		//Mockito.when(userDao.getStats(1)).then((Answer<UserStatsTO>) userStatsTo);
-		Mockito.when(userDao.getStats("login123")).thenReturn(userStatsTo);
 		//when
 		UserStatsTO returnedUserStatsTo = userDao.getStats("login123");
 		//then
-		Assert.assertEquals(3, returnedUserStatsTo.getGamesWon());
+		assertEquals(3, returnedUserStatsTo.getGamesWon());
 	}
 
+	@Test
+	public void shouldGetStatsWithId() {
+		//given
+		//when
+		UserStatsTO returnedUserStatsTo = userDao.getStats(123L);
+		//then
+		assertEquals(3, returnedUserStatsTo.getGamesWon());
+	}
 }

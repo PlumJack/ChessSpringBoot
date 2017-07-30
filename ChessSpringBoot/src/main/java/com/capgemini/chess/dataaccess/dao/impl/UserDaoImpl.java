@@ -30,7 +30,8 @@ public class UserDaoImpl implements UserDao {
 		}
 		UserProfileEntity user = UserProfileMapper.map(to);
 		Long id = generateId();
-		to.setId(id);
+		//System.out.println("generated Id: " + id);
+		user.setId(id);
 		users.put(id, user);
 		return UserProfileMapper.map(user);
 	}
@@ -54,7 +55,8 @@ public class UserDaoImpl implements UserDao {
 
 
 	private Long generateId() {
-		return users.keySet().stream().max((i1, i2) -> i1.compareTo(i2)).orElse(0L) + 1;
+		return users.keySet().stream().max((i1, i2) -> i1.compareTo(i2)).orElse(0L) + 1L;
+		//return users.keySet().stream().max((i1,i2)->i1.compareTo(i2)).orElse(0L)+1;
 	}
 	/*
 	public UserStatsTO getStats(String email){
@@ -69,13 +71,22 @@ public class UserDaoImpl implements UserDao {
 	}
 	*/
 	public UserStatsTO getStats(String login){
-		UserProfileEntity user = UserProfileMapper.map(findByLogin(login));
-		return UserStatsMapper.map(user.getUserStatsEntity());
+		
+		UserProfileTO user = findByLogin(login);
+		return user.getUserStatsTO();
+		
+		//UserProfileEntity user = UserProfileMapper.map(findByLogin(login));
+		//return UserStatsMapper.map(user.getUserStatsEntity());
+		
 	}
 	
 	public UserStatsTO getStats(Long id){
-		UserProfileEntity user = UserProfileMapper.map(findById(id));
-		return UserStatsMapper.map(user.getUserStatsEntity());
+		
+		UserProfileTO user = findById(id);
+		return user.getUserStatsTO();
+		
+		//UserProfileEntity user = UserProfileMapper.map(findById(id));
+		//return UserStatsMapper.map(user.getUserStatsEntity());
 	}
 
 	@Override
