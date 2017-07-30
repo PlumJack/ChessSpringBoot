@@ -10,5 +10,5 @@ public interface UserProfileValidationService {
 	void validateId(Long id) throws UserProfileValidationException;
 	void validateLogin(String login) throws UserProfileValidationException;
 	
-	void validateUserUpdate(UserUpdateTO userUpdateTO) throws UserProfileValidationException;
+	//void validateUserUpdate(UserUpdateTO userUpdateTO) throws UserProfileValidationException;
 }

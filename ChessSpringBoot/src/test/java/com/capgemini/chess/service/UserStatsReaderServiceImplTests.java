@@ -12,6 +12,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 import org.mockito.stubbing.Answer;
 
 import com.capgemini.chess.dataaccess.UserDao;
+import com.capgemini.chess.exception.UserProfileValidationException;
 import com.capgemini.chess.service.impl.UserStatsReaderServiceImpl;
 import com.capgemini.chess.service.to.UserStatsTO;
 
@@ -31,27 +32,27 @@ public class UserStatsReaderServiceImplTests {
 	
 	
 	@Before
-	public void setup(){
+	public void setup() throws UserProfileValidationException {
 		UserStatsTO userStatsTo = new UserStatsTO();
 		userStatsTo.setGamesWon(3);
-		Mockito.when(userDao.getStats("login123")).thenReturn(userStatsTo);
-		Mockito.when(userDao.getStats(123L)).thenReturn(userStatsTo);
+		Mockito.when(userStatsReaderServiceImpl.getStats("login123")).thenReturn(userStatsTo);
+		Mockito.when(userStatsReaderServiceImpl.getStats(123L)).thenReturn(userStatsTo);
 	}
 	
 	@Test
-	public void shouldGetStatsWithLogin() {
+	public void shouldGetStatsWithLogin() throws UserProfileValidationException {
 		//given
 		//when
-		UserStatsTO returnedUserStatsTo = userDao.getStats("login123");
+		UserStatsTO returnedUserStatsTo = userStatsReaderServiceImpl.getStats("login123");
 		//then
 		assertEquals(3, returnedUserStatsTo.getGamesWon());
 	}
 
 	@Test
-	public void shouldGetStatsWithId() {
+	public void shouldGetStatsWithId() throws UserProfileValidationException {
 		//given
 		//when
-		UserStatsTO returnedUserStatsTo = userDao.getStats(123L);
+		UserStatsTO returnedUserStatsTo = userStatsReaderServiceImpl.getStats(123L);
 		//then
 		assertEquals(3, returnedUserStatsTo.getGamesWon());
 	}

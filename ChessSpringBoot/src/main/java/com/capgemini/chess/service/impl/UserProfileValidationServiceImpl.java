@@ -18,29 +18,14 @@ public class UserProfileValidationServiceImpl implements UserProfileValidationSe
 	public UserProfileValidationServiceImpl(UserDao userDao) {
 		this.userDao = userDao;
 	}
-	/*
-	public void validateEmail(String email) throws UserProfileValidationException {
-		UserProfileTO foundByEmail = userDao.findByEmail(email);
-		if (foundByEmail != null) {
-			throw new UserProfileValidationException("There is no user with that email.");
-		}
-	}
-	*/
-	/*
-	public void validateId(Long id) throws UserProfileValidationException {
-		UserProfileTO foundById = userDao.findById(id);
-		if (foundById != null) {
-			throw new UserProfileValidationException("There is no user with that ID.");
-		}
-	}
-	*/
+
 	public void validateLogin(String login) throws UserProfileValidationException {
 		UserProfileTO foundByLogin = userDao.findByLogin(login);
-		if (foundByLogin != null) {
+		if (foundByLogin == null) {
 			throw new UserProfileValidationException("There is no user with that Login.");
 		}
 	}
-	
+	/*
 	@Override
 	public void validateUserUpdate(UserUpdateTO userUpdateTO) throws UserProfileValidationException {
 		// TODO Auto-generated method stub
@@ -49,10 +34,11 @@ public class UserProfileValidationServiceImpl implements UserProfileValidationSe
 		validateLogin(userUpdateTO.getLifeMotto());
 		
 	}
+	*/
 	@Override
 	public void validateId(Long id) throws UserProfileValidationException {
 		UserProfileTO foundById = userDao.findById(id);
-		if (foundById != null) {
+		if (foundById == null) {
 			throw new UserProfileValidationException("There is no user with that Id.");
 		}
 		
