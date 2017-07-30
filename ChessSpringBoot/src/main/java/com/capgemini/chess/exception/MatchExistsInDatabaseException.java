@@ -5,4 +5,5 @@ public class MatchExistsInDatabaseException extends Exception {
 	public MatchExistsInDatabaseException(String message) {
 		super(message);
 	}
+	
 }

@@ -7,9 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.capgemini.chess.dataaccess.MatchDao;
 import com.capgemini.chess.dataaccess.entities.MatchEntity;
-import com.capgemini.chess.dataaccess.entities.UserProfileEntity;
 import com.capgemini.chess.dataaccess.mappers.MatchMapper;
-import com.capgemini.chess.dataaccess.mappers.UserProfileMapper;
 import com.capgemini.chess.exception.MatchExistsInDatabaseException;
 import com.capgemini.chess.service.to.MatchTO;
 

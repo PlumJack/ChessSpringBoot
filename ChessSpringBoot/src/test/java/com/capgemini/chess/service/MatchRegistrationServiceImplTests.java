@@ -1,26 +1,21 @@
 package com.capgemini.chess.service;
 
-import static org.junit.Assert.*;
-
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
-import org.mockito.BDDMockito;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import com.capgemini.chess.dataaccess.MatchDao;
 import com.capgemini.chess.dataaccess.enums.GameResult;
-import com.capgemini.chess.exception.InvalidPasswordException;
 import com.capgemini.chess.exception.MatchExistsInDatabaseException;
 import com.capgemini.chess.exception.MatchValidationException;
 import com.capgemini.chess.exception.UserProfileValidationException;
 import com.capgemini.chess.service.impl.MatchRegistrationServiceImpl;
 import com.capgemini.chess.service.to.MatchTO;
-import com.capgemini.chess.service.to.UserUpdateTO;
 
 @RunWith(MockitoJUnitRunner.class)
 public class MatchRegistrationServiceImplTests {
@@ -43,6 +38,7 @@ public class MatchRegistrationServiceImplTests {
 	MatchTO invalidHostId;
 	MatchTO invalidGuestId;
 	MatchTO okMatchWithId;
+	
 	@Before
 	public void setUp() throws UserProfileValidationException, MatchExistsInDatabaseException {
 		matchRegistrationService = new MatchRegistrationServiceImpl(matchDao, matchValidationService,
@@ -53,22 +49,9 @@ public class MatchRegistrationServiceImplTests {
 		invalidGuestId = createMatchTO(1L,5L,GameResult.HOST_WON);
 		okMatchWithId = createMatchTO(1L,2L,GameResult.HOST_WON);
 		okMatchWithId.setId(1L);
-		//BDDMockito.given(userProfileValidationService.validateId(5L)).willReturn(createUserProfile(2));
-		//BDDMockito.given(userProfileValidationService.validateId(5L))
-		
+
 		Mockito.doThrow(UserProfileValidationException.class).when(userProfileValidationService).validateId(5L);
 		Mockito.when(matchDao.save(okMatch)).thenReturn(okMatchWithId);
-		//Mockito.doThrow(UserProfileValidationException.class).when(userProfileValidationService).validateId(5L);
-		/*
-		userProfileValidationService.validateId(newMatch.getHostPlayerId());
-		userProfileValidationService.validateId(newMatch.getGuestPlayerId());
-		
-		MatchTO matchTO = matchDao.save(newMatch);
-		matchValidationService.validateMatch(matchTO.getId());
-		
-		userStatsUpdateService.updateStats(newMatch);
-*/
-
 	}
 	
 	private MatchTO createMatchTO(Long hostId, Long guestId, GameResult result){

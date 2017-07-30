@@ -46,8 +46,6 @@ public class UserStatsUpdateServiceImpl implements UserStatsUpdateService {
 		userDao.updateUserStats(matchto.getHostPlayerId(), hostStats);
 		userDao.updateUserStats(matchto.getGuestPlayerId(), guestStats);
 		userDao.updatePositions();
-
 	}
-
 
 }

@@ -8,9 +8,6 @@ import com.capgemini.chess.service.to.UserUpdateTO;
 public interface UserDao {
 
 	UserProfileTO save(UserProfileTO to) throws UserProfileExistsInDatabaseException;
-	//UserStatsTO getStats(String email);
-	//UserStatsTO getStats(Long id);
-	//UserProfileTO findByEmail(String email);
 	UserProfileTO findById(Long id);
 	UserProfileTO findByLogin(String login);
 	UserStatsTO getStats(String login);

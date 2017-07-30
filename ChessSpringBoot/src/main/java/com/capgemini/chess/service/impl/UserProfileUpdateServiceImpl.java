@@ -26,9 +26,6 @@ public class UserProfileUpdateServiceImpl implements UserProfileUpdateService {
 		this.userDao = userDao;
 	}
 
-
-
-
 	@Override
 	public void updateUser(UserUpdateTO userUpdateTO) throws UserProfileValidationException, InvalidPasswordException {
 		userProfileValidationService.validateLogin(userUpdateTO.getLogin());

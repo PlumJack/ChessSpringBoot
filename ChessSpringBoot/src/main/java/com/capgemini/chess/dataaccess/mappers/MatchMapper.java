@@ -1,7 +1,6 @@
 package com.capgemini.chess.dataaccess.mappers;
 
 import com.capgemini.chess.dataaccess.entities.MatchEntity;
-import com.capgemini.chess.dataaccess.enums.GameResult;
 import com.capgemini.chess.service.to.MatchTO;
 
 public class MatchMapper {

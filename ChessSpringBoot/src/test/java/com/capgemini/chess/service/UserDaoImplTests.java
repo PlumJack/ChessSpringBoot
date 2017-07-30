@@ -2,22 +2,15 @@ package com.capgemini.chess.service;
 
 import static org.junit.Assert.*;
 
-import javax.persistence.Lob;
-
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.capgemini.chess.ChessApplication;
 import com.capgemini.chess.dataaccess.UserDao;
 import com.capgemini.chess.dataaccess.dao.impl.UserDaoImpl;
 import com.capgemini.chess.exception.UserProfileExistsInDatabaseException;
@@ -25,17 +18,12 @@ import com.capgemini.chess.service.to.UserProfileTO;
 import com.capgemini.chess.service.to.UserStatsTO;
 import com.capgemini.chess.service.to.UserUpdateTO;
 
-import junit.framework.Assert;
-
-//@RunWith(MockitoJUnitRunner.class)
-//@ContextConfiguration(classes = ChessApplication.class)
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration
 public class UserDaoImplTests {
 	
 	private static boolean setUpIsDone = false;
 	
-	//@InjectMocks
 	@Autowired
 	private UserDao userDao;
 
@@ -58,12 +46,7 @@ public class UserDaoImplTests {
 		user1 = userDao.save(user1);
 		user2 = userDao.save(user2);
 		user3 = userDao.save(user3);
-		/*
-		System.out.println("Id: ");
-		System.out.println(user1.getId());
-		System.out.println(user2.getId());
-		System.out.println(user3.getId());
-		*/
+
 		setUpIsDone = true;
 	}
 	

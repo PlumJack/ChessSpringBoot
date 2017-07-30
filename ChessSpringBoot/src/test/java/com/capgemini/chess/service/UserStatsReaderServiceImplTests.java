@@ -9,14 +9,11 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
-import org.mockito.stubbing.Answer;
 
 import com.capgemini.chess.dataaccess.UserDao;
 import com.capgemini.chess.exception.UserProfileValidationException;
 import com.capgemini.chess.service.impl.UserStatsReaderServiceImpl;
 import com.capgemini.chess.service.to.UserStatsTO;
-
-import junit.framework.Assert;
 
 @RunWith(MockitoJUnitRunner.class)
 public class UserStatsReaderServiceImplTests {

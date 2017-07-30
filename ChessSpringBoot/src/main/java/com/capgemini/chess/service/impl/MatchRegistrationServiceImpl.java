@@ -40,7 +40,6 @@ public class MatchRegistrationServiceImpl implements MatchRegistrationService {
 		matchValidationService.validateMatch(matchTO.getId());
 		
 		userStatsUpdateService.updateStats(newMatch);
-
 	}
 
 }

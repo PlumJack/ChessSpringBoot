@@ -1,7 +1,5 @@
 package com.capgemini.chess.service;
 
-import static org.junit.Assert.*;
-
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -13,9 +11,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import com.capgemini.chess.dataaccess.UserDao;
 import com.capgemini.chess.exception.InvalidPasswordException;
-import com.capgemini.chess.exception.UserProfileValidationException;
 import com.capgemini.chess.service.impl.PasswordValidationServiceImpl;
-import com.capgemini.chess.service.impl.UserProfileValidationServiceImpl;
 import com.capgemini.chess.service.to.UserProfileTO;
 import com.capgemini.chess.service.to.UserStatsTO;
 import com.capgemini.chess.service.to.UserUpdateTO;

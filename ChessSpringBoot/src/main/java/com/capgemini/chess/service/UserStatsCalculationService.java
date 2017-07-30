@@ -6,5 +6,6 @@ public interface UserStatsCalculationService {
 	
 	UserStatsTO addWin(UserStatsTO userStatsTO);
 	UserStatsTO addDraw(UserStatsTO userStatsTO);
-	UserStatsTO addLoss(UserStatsTO userStatsTO);	
+	UserStatsTO addLoss(UserStatsTO userStatsTO);
+	
 }

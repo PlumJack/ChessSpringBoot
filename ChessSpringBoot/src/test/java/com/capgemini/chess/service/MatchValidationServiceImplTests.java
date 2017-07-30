@@ -1,7 +1,5 @@
 package com.capgemini.chess.service;
 
-import static org.junit.Assert.*;
-
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -13,11 +11,9 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import com.capgemini.chess.dataaccess.MatchDao;
 import com.capgemini.chess.dataaccess.enums.GameResult;
-import com.capgemini.chess.exception.InvalidPasswordException;
 import com.capgemini.chess.exception.MatchValidationException;
 import com.capgemini.chess.service.impl.MatchValidationServiceImpl;
 import com.capgemini.chess.service.to.MatchTO;
-import com.capgemini.chess.service.to.UserUpdateTO;
 
 @RunWith(MockitoJUnitRunner.class)
 public class MatchValidationServiceImplTests {

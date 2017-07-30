@@ -9,9 +9,6 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import com.capgemini.chess.service.impl.UserStatsCalculationServiceImpl;
 import com.capgemini.chess.service.to.UserStatsTO;
-import com.capgemini.chess.service.to.UserUpdateTO;
-
-import junit.framework.Assert;
 
 @RunWith(MockitoJUnitRunner.class)
 public class UserStatsCalculationServiceImplTests {

@@ -1,7 +1,6 @@
 package com.capgemini.chess.service;
 
 import static org.junit.Assert.*;
-//import static org.mockito.Mockito.*;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,17 +8,12 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.capgemini.chess.exception.UserProfileValidationException;
 import com.capgemini.chess.service.impl.UserServiceFacadeImpl;
 import com.capgemini.chess.service.impl.UserStatsReaderServiceImpl;
 import com.capgemini.chess.service.to.UserStatsTO;
 
-import junit.framework.Assert;
-
-//@RunWith(SpringJUnit4ClassRunner.class)
 @RunWith(MockitoJUnitRunner.class)
 public class UserServiceFacadeImplTests {
 
@@ -43,7 +37,7 @@ public class UserServiceFacadeImplTests {
 		//when
 		UserStatsTO returnedUserStatsTo = userStatsReaderServiceImpl.getStats("login123");
 		//then
-		Assert.assertEquals(3, returnedUserStatsTo.getGamesWon());
+		assertEquals(3, returnedUserStatsTo.getGamesWon());
 	}
 	
 }

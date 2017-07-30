@@ -1,9 +1,9 @@
 package com.capgemini.chess.service;
 
-import static org.junit.Assert.*;
-
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.mockito.BDDMockito;
 import org.mockito.Mock;
@@ -34,32 +34,11 @@ public class UserStatsUpdateServiceImplTests {
 	    public void setUp() throws UserProfileValidationException {
 			userStatsUpdateService = new UserStatsUpdateServiceImpl(userStatsReaderService,
 					userStatsCalculationService, userDao);
-
 			
 			BDDMockito.given(userStatsReaderService.getStats(1L)).willReturn(createUserStats(2));
 			BDDMockito.given(userStatsReaderService.getStats(2L)).willReturn(createUserStats(2));
-			
-			//BDDMockito.given(userDao.findByLogin("login2")).willReturn(createUserProfile(2));
-			
-			
-//			UserStatsTO hostStats = userStatsReaderService.getStats(matchto.getHostPlayerId());
-//			UserStatsTO guestStats = userStatsReaderService.getStats(matchto.getGuestPlayerId());
-//			
-//			switch(matchto.getGameResult()){
-//			case HOST_WON:
-//				hostStats = userStatsCalculationService.addWin(hostStats);
-//				guestStats = userStatsCalculationService.addLoss(guestStats);
-//			case GUEST_WON:
-//				hostStats = userStatsCalculationService.addLoss(hostStats);
-//				guestStats = userStatsCalculationService.addWin(guestStats);
-//			case DRAW:
-//				hostStats = userStatsCalculationService.addDraw(hostStats);
-//				guestStats = userStatsCalculationService.addDraw(guestStats);
-//			}
-//			
-//			userDao.updateUserStats(matchto.getHostPlayerId(), hostStats);
-//			userDao.updateUserStats(matchto.getGuestPlayerId(), guestStats);
-//			userDao.updatePositions();
+			BDDMockito.given(userStatsReaderService.getStats(5L)).willThrow(UserProfileValidationException.class);
+
 		}
 	
 	private UserStatsTO createUserStats(int i){
@@ -83,11 +62,24 @@ public class UserStatsUpdateServiceImplTests {
 		return match;
 	}
 	
+	@Rule
+    public ExpectedException thrown = ExpectedException.none();
+	
 	@Test
 	public void shouldNotThrowExceptionWhenValidData() throws UserProfileValidationException{
 		//given
 		MatchTO validMatch = createMatchTO(1L,2L,GameResult.HOST_WON);
 		//when
+		userStatsUpdateService.updateStats(validMatch);
+		//then
+	}
+	
+	@Test
+	public void shouldThrowExceptionWhenInValidData() throws UserProfileValidationException{
+		//given
+		MatchTO validMatch = createMatchTO(1L,5L,GameResult.HOST_WON);
+		//when
+		thrown.expect(UserProfileValidationException.class);
 		userStatsUpdateService.updateStats(validMatch);
 		//then
 	}

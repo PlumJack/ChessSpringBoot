@@ -59,8 +59,6 @@ public class UserUpdateTO {
 	}
 	public void setLifeMotto(String lifeMotto) {
 		this.lifeMotto = lifeMotto;
-	}
-	
-	
+	}	
 
 }

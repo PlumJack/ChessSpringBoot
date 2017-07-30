@@ -6,4 +6,5 @@ import com.capgemini.chess.service.to.UserUpdateTO;
 public interface PasswordValidationService {
 
 	void validatePassword(UserUpdateTO userUpdateTO) throws InvalidPasswordException;
+	
 }

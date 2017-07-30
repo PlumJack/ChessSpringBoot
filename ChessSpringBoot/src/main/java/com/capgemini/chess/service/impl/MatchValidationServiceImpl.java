@@ -5,9 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.capgemini.chess.dataaccess.MatchDao;
 import com.capgemini.chess.exception.MatchValidationException;
-import com.capgemini.chess.exception.UserProfileValidationException;
 import com.capgemini.chess.service.MatchValidationService;
-import com.capgemini.chess.service.UserProfileValidationService;
 import com.capgemini.chess.service.to.MatchTO;
 
 @Service
