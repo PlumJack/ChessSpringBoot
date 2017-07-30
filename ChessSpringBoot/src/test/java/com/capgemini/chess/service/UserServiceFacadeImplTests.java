@@ -23,7 +23,6 @@ public class UserServiceFacadeImplTests {
 	@Mock
 	private UserStatsReaderServiceImpl userStatsReaderServiceImpl;
 	
-	
 	@Test
 	public void test() throws UserProfileValidationException {
 		//given
@@ -31,9 +30,7 @@ public class UserServiceFacadeImplTests {
 		userStatsTo.setGamesPlayed(5);
 		userStatsTo.setGamesWon(3);
 		userStatsTo.setGamesLost(2);
-		//Mockito.when(userDao.getStats(1)).then((Answer<UserStatsTO>) userStatsTo);
 		Mockito.when(userStatsReaderServiceImpl.getStats("login123")).thenReturn(userStatsTo);
-		//when(userStatsReaderServiceImpl.getStats("login123")).thenReturn(userStatsTo);
 		//when
 		UserStatsTO returnedUserStatsTo = userStatsReaderServiceImpl.getStats("login123");
 		//then

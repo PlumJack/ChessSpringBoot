@@ -24,15 +24,15 @@ public class UserServiceFacadeImpl implements UserServiceFacade {
 	
 	private UserDao userDao = null;
 	private UserStatsReaderService userStatsReaderService = null;
-	private UserProfileUpdateService updateUserProfileService = null;
+	private UserProfileUpdateService userProfileUpdateService = null;
 	private MatchRegistrationService matchRegistrationService = null;
 
 	@Autowired
 	public UserServiceFacadeImpl(UserDao userDao, UserStatsReaderService userStatsReaderService,
-			UserProfileUpdateService updateUserProfileService, MatchRegistrationService matchRegistrationService) {
+			UserProfileUpdateService userProfileUpdateService, MatchRegistrationService matchRegistrationService) {
 		this.userDao = userDao;
 		this.userStatsReaderService = userStatsReaderService;
-		this.updateUserProfileService = updateUserProfileService;
+		this.userProfileUpdateService = userProfileUpdateService;
 		this.matchRegistrationService = matchRegistrationService;
 	}
 
@@ -46,7 +46,7 @@ public class UserServiceFacadeImpl implements UserServiceFacade {
 
 	@Override
 	public void updateUserProfile(UserUpdateTO userUpdateTO) throws UserProfileValidationException, InvalidPasswordException {
-		updateUserProfileService.updateUser(userUpdateTO);
+		userProfileUpdateService.updateUser(userUpdateTO);
 		
 	}
 

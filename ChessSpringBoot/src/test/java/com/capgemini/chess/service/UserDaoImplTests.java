@@ -28,7 +28,7 @@ public class UserDaoImplTests {
 	private UserDao userDao;
 
 	@Configuration
-	static class RankServiceTestContextConfiguration {
+	static class TestContextConfiguration {
 		@Bean
 		public UserDao userDao() {
 			return new UserDaoImpl();

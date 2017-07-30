@@ -27,7 +27,7 @@ public class MatchDaoImplTests {
 	private MatchDao matchDao;
 
 	@Configuration
-	static class RankServiceTestContextConfiguration {
+	static class TestContextConfiguration {
 		@Bean
 		public MatchDao matchDao() {
 			return new MatchDaoImpl();
