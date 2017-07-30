@@ -10,32 +10,49 @@ public class UserStatsCalculationServiceImpl implements UserStatsCalculationServ
 
 	@Override
 	public UserStatsTO addWin(UserStatsTO userStatsTO) {
-		userStatsTO.setGamesPlayed(userStatsTO.getGamesPlayed()+1);
-		userStatsTO.setGamesWon(userStatsTO.getGamesWon()+1);
-		userStatsTO.setPoints(userStatsTO.getPoints()+10);
-		userStatsTO.setLevel(calculateLevel(userStatsTO));
-		return userStatsTO;
+		UserStatsTO newStats = copyStats(userStatsTO);
+		newStats.setGamesPlayed(userStatsTO.getGamesPlayed()+1);
+		newStats.setGamesWon(userStatsTO.getGamesWon()+1);
+		newStats.setPoints(userStatsTO.getPoints()+10);
+		newStats.setLevel(calculateLevel(newStats));
+		return newStats;
 	}
 
 	@Override
 	public UserStatsTO addDraw(UserStatsTO userStatsTO) {
-		userStatsTO.setGamesPlayed(userStatsTO.getGamesPlayed()+1);
-		userStatsTO.setGamesDrawn(userStatsTO.getGamesDrawn()+1);
-		userStatsTO.setLevel(calculateLevel(userStatsTO));
-		return userStatsTO;
+		UserStatsTO newStats = copyStats(userStatsTO);
+		newStats.setGamesPlayed(userStatsTO.getGamesPlayed()+1);
+		newStats.setGamesDrawn(userStatsTO.getGamesDrawn()+1);
+		newStats.setLevel(calculateLevel(newStats));
+		return newStats;
 	}
 
 	@Override
 	public UserStatsTO addLoss(UserStatsTO userStatsTO) {
-		userStatsTO.setGamesPlayed(userStatsTO.getGamesPlayed()+1);
-		userStatsTO.setGamesLost(userStatsTO.getGamesLost()+1);
-		userStatsTO.setPoints(userStatsTO.getPoints()-10);
-		userStatsTO.setLevel(calculateLevel(userStatsTO));
-		return userStatsTO;
+		UserStatsTO newStats = copyStats(userStatsTO);
+		newStats.setGamesPlayed(userStatsTO.getGamesPlayed()+1);
+		newStats.setGamesLost(userStatsTO.getGamesLost()+1);
+		newStats.setPoints(userStatsTO.getPoints()-10);
+		newStats.setLevel(calculateLevel(newStats));
+		return newStats;
 	}
 	
 	private int calculateLevel(UserStatsTO u){
-		return (int)(10 * u.getGamesWon() / u.getGamesPlayed());
+		double nominator = 10 * u.getGamesWon() + 5 * u.getGamesDrawn();
+		double denominator = u.getGamesPlayed();
+		return (int)(nominator/denominator);
+	}
+	
+	private UserStatsTO copyStats(UserStatsTO statsToCopy){
+		UserStatsTO copy = new UserStatsTO();
+		copy.setLevel(statsToCopy.getLevel());
+		copy.setPosition(statsToCopy.getPosition());
+		copy.setPoints(statsToCopy.getPoints());
+		copy.setGamesPlayed(statsToCopy.getGamesPlayed());
+		copy.setGamesWon(statsToCopy.getGamesWon());
+		copy.setGamesDrawn(statsToCopy.getGamesDrawn());
+		copy.setGamesLost(statsToCopy.getGamesLost());
+		return copy;
 	}
 
 }

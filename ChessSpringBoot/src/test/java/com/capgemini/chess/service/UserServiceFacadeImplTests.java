@@ -1,6 +1,7 @@
 package com.capgemini.chess.service;
 
 import static org.junit.Assert.*;
+//import static org.mockito.Mockito.*;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -38,6 +39,7 @@ public class UserServiceFacadeImplTests {
 		userStatsTo.setGamesLost(2);
 		//Mockito.when(userDao.getStats(1)).then((Answer<UserStatsTO>) userStatsTo);
 		Mockito.when(userStatsReaderServiceImpl.getStats("login123")).thenReturn(userStatsTo);
+		//when(userStatsReaderServiceImpl.getStats("login123")).thenReturn(userStatsTo);
 		//when
 		UserStatsTO returnedUserStatsTo = userStatsReaderServiceImpl.getStats("login123");
 		//then

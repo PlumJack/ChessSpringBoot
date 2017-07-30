@@ -9,7 +9,7 @@ import com.capgemini.chess.exception.MatchValidationException;
 import com.capgemini.chess.exception.UserProfileExistsInDatabaseException;
 import com.capgemini.chess.exception.UserProfileValidationException;
 import com.capgemini.chess.service.MatchRegistrationService;
-import com.capgemini.chess.service.UpdateUserProfileService;
+import com.capgemini.chess.service.UserProfileUpdateService;
 import com.capgemini.chess.service.UserServiceFacade;
 import com.capgemini.chess.service.UserStatsReaderService;
 import com.capgemini.chess.dataaccess.UserDao;
@@ -24,12 +24,12 @@ public class UserServiceFacadeImpl implements UserServiceFacade {
 	
 	private UserDao userDao = null;
 	private UserStatsReaderService userStatsReaderService = null;
-	private UpdateUserProfileService updateUserProfileService = null;
+	private UserProfileUpdateService updateUserProfileService = null;
 	private MatchRegistrationService matchRegistrationService = null;
 
 	@Autowired
 	public UserServiceFacadeImpl(UserDao userDao, UserStatsReaderService userStatsReaderService,
-			UpdateUserProfileService updateUserProfileService, MatchRegistrationService matchRegistrationService) {
+			UserProfileUpdateService updateUserProfileService, MatchRegistrationService matchRegistrationService) {
 		this.userDao = userDao;
 		this.userStatsReaderService = userStatsReaderService;
 		this.updateUserProfileService = updateUserProfileService;

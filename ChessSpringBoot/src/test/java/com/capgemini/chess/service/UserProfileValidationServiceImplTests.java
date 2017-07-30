@@ -3,7 +3,9 @@ package com.capgemini.chess.service;
 import static org.junit.Assert.*;
 
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.mockito.BDDMockito;
 import org.mockito.InjectMocks;
@@ -36,7 +38,6 @@ public class UserProfileValidationServiceImplTests {
 	private UserProfileValidationService userProfileValidationService;
 	
 	@Mock
-	//@Spy
 	private UserDao userDao;
 	
 	
@@ -82,56 +83,59 @@ public class UserProfileValidationServiceImplTests {
 		return userStatsTO;
 	}
 	
+	@Rule
+    public ExpectedException thrown = ExpectedException.none();
+	
 	@Test
-	public void shouldThrowExceptionWhenInvalidId() {
+	public void shouldThrowExceptionWhenInvalidId() throws UserProfileValidationException {
+		//given
+		Long id = 5L;
 		
-		boolean exceptionCatched = false;
-		try {
-			userProfileValidationService.validateId(5L);
-		} catch (UserProfileValidationException e) {
-			exceptionCatched = true;
-		}
-		assertTrue(exceptionCatched);
+		//when
+		thrown.expect(UserProfileValidationException.class);
+		userProfileValidationService.validateId(id);
 		
+		//then		
 	}
 	
 	@Test
-	public void shouldThrowExceptionWhenInvalidLogin() {
+	public void shouldThrowExceptionWhenInvalidLogin() throws UserProfileValidationException {
 		
-		boolean exceptionCatched = false;
-		try {
-			userProfileValidationService.validateLogin("login5");
-		} catch (UserProfileValidationException e) {
-			exceptionCatched = true;
-		}
-		assertTrue(exceptionCatched);
+		//given
+		String login = "login5";
 		
-	}
-
-	@Test
-	public void shouldNotThrowExceptionWhenValidId() {
+		//when
+		thrown.expect(UserProfileValidationException.class);
+		userProfileValidationService.validateLogin(login);
 		
-		boolean exceptionCatched = false;
-		try {
-			userProfileValidationService.validateId(2L);
-		} catch (UserProfileValidationException e) {
-			exceptionCatched = true;
-		}
-		assertFalse(exceptionCatched);
+		//then
 		
 	}
 
 	@Test
-	public void shouldNotThrowExceptionWhenValidLogin() {
+	public void shouldNotThrowExceptionWhenValidId() throws UserProfileValidationException {
 		
-		boolean exceptionCatched = false;
-		try {
-			userProfileValidationService.validateLogin("login2");
-		} catch (UserProfileValidationException e) {
-			exceptionCatched = true;
-		}
-		assertFalse(exceptionCatched);
+		//given
+		Long id = 2L;
+				
+		//when
+		userProfileValidationService.validateId(id);
+				
+		//then		
 		
+	}
+
+	@Test
+	public void shouldNotThrowExceptionWhenValidLogin() throws UserProfileValidationException {
+		
+		//given
+		String login = "login2";
+				
+		//when
+		userProfileValidationService.validateLogin(login);
+				
+		//then
+					
 	}
 	
 
