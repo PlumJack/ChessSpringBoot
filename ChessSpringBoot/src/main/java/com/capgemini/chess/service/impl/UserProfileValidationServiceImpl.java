@@ -7,7 +7,6 @@ import com.capgemini.chess.dataaccess.UserDao;
 import com.capgemini.chess.exception.UserProfileValidationException;
 import com.capgemini.chess.service.UserProfileValidationService;
 import com.capgemini.chess.service.to.UserProfileTO;
-import com.capgemini.chess.service.to.UserUpdateTO;
 
 @Service
 public class UserProfileValidationServiceImpl implements UserProfileValidationService {

@@ -4,10 +4,18 @@ import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.BDDMockito;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.Spy;
+import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.beans.factory.annotation.Autowired;
+
+//import static org.hamcrest.MatcherAssert.assertThat;
+//import static org.mockito.BDDMockito.given;
+//import static org.hamcrest.Matchers.*;
 
 import com.capgemini.chess.dataaccess.UserDao;
 import com.capgemini.chess.dataaccess.dao.impl.UserDaoImpl;
@@ -17,25 +25,37 @@ import com.capgemini.chess.service.impl.UserProfileValidationServiceImpl;
 import com.capgemini.chess.service.to.UserProfileTO;
 import com.capgemini.chess.service.to.UserStatsTO;
 
+@RunWith(MockitoJUnitRunner.class)
 public class UserProfileValidationServiceImplTests {
 
 	private static boolean setUpIsDone = false;
 		
-	UserProfileValidationService userProfileValidationService;
+	//UserProfileValidationService userProfileValidationService;
 	
+	//@InjectMocks
+	private UserProfileValidationService userProfileValidationService;
+	
+	@Mock
+	//@Spy
 	private UserDao userDao;
 	
+	
+	
 	@Before
-	    public void setUp() throws UserProfileExistsInDatabaseException {
-			userDao = new UserDaoImpl();
+	    public void setUp() {
 			userProfileValidationService = new UserProfileValidationServiceImpl(userDao);
-			userDao.save(createUserProfile(1));
-			userDao.save(createUserProfile(2));
+	
+			BDDMockito.given(userDao.findById(2L)).willReturn(createUserProfile(2));
+			BDDMockito.given(userDao.findById(5L)).willReturn(null);
+			BDDMockito.given(userDao.findByLogin("login2")).willReturn(createUserProfile(2));
+			BDDMockito.given(userDao.findByLogin("login5")).willReturn(null);
+
 		}
 	
 	
 	private UserProfileTO createUserProfile(int i){
 		UserProfileTO userProfileTO = new UserProfileTO();
+		userProfileTO.setId(new Long(i));
 		userProfileTO.setLogin("login" + i);
 		userProfileTO.setPassword("password" + i);
 		userProfileTO.setName("name" + i);
