@@ -24,16 +24,7 @@ public class UserProfileValidationServiceImpl implements UserProfileValidationSe
 			throw new UserProfileValidationException("There is no user with that Login.");
 		}
 	}
-	/*
-	@Override
-	public void validateUserUpdate(UserUpdateTO userUpdateTO) throws UserProfileValidationException {
-		// TODO Auto-generated method stub
-		
-		//UserProfileTO foundByLogin = userDao.findByLogin(userUpdateTO.getLifeMotto());
-		validateLogin(userUpdateTO.getLifeMotto());
-		
-	}
-	*/
+
 	@Override
 	public void validateId(Long id) throws UserProfileValidationException {
 		UserProfileTO foundById = userDao.findById(id);

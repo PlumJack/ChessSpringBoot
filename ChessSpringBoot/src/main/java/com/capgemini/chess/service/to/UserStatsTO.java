@@ -9,6 +9,7 @@ public class UserStatsTO {
 	private int gamesWon;
 	private int gamesDrawn;
 	private int gamesLost;
+	
 	public int getLevel() {
 		return level;
 	}

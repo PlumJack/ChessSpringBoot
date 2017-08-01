@@ -6,22 +6,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 
-@Entity
 public class UserProfileEntity {
 
-	@Id
-	@GeneratedValue
 	private Long id;
-	@Column(nullable = false)
 	private String login;
-	@Column(nullable = false)
 	private String password;
 	private String name;
 	private String surname;
 	private String email;
-	@Lob
 	private String aboutMe;
-	@Lob
 	private String lifeMotto;
 	private UserStatsEntity userStatsEntity;
 

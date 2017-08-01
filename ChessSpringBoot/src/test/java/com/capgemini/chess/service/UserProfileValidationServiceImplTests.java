@@ -76,7 +76,8 @@ public class UserProfileValidationServiceImplTests {
 		thrown.expect(UserProfileValidationException.class);
 		userProfileValidationService.validateId(id);
 		
-		//then		
+		//then	
+		
 	}
 	
 	@Test
